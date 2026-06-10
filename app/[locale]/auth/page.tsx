@@ -14,7 +14,7 @@ export default async function AuthPage({
   const isAr = locale === "ar";
 
   return (
-    <main className="flex min-h-screen w-full bg-white">
+    <main className="flex min-h-screen w-full bg-background">
       {/* Left/Right Side Image (Hidden on mobile) */}
       <div className="relative hidden w-1/2 lg:block">
         <Image
@@ -30,7 +30,7 @@ export default async function AuthPage({
         {/* Brand Overlay */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-12 text-center">
           <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 transition-transform hover:scale-105">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#008ECC] shadow-xl">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary shadow-float">
               <Store className="h-8 w-8 text-white" />
             </div>
             <span className="text-4xl font-black tracking-tight drop-shadow-md">MegaMart</span>
@@ -50,10 +50,10 @@ export default async function AuthPage({
       <div className="flex w-full flex-col justify-center px-8 lg:w-1/2 lg:px-24 xl:px-32 relative">
         {/* Mobile Logo */}
         <Link href={`/${locale}`} className="absolute top-8 start-8 flex items-center gap-2 lg:hidden">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#008ECC]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary shadow-sm">
             <Store className="h-5 w-5 text-white" />
           </div>
-          <span className="text-xl font-black text-gray-900">MegaMart</span>
+          <span className="text-xl font-black text-foreground">MegaMart</span>
         </Link>
 
         <div className="mx-auto w-full max-w-sm">

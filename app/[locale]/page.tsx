@@ -38,7 +38,7 @@ export default async function HomePage({
   }));
 
   return (
-    <div className="relative min-h-screen flex flex-col bg-white overflow-hidden">
+    <div className="relative min-h-screen flex flex-col bg-background overflow-hidden">
       {/* Premium Grid Pattern Background */}
       <div className="absolute inset-0 z-0 pointer-events-none flex justify-center h-[120vh]">
         <GridPattern

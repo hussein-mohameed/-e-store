@@ -25,7 +25,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="mt-auto bg-[#111111] text-white">
+    <footer className="mt-auto bg-primary text-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="space-y-6">

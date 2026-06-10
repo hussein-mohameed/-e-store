@@ -63,9 +63,11 @@ export function AuthDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger className="flex items-center gap-2 text-gray-700 hover:text-[#008ECC] transition-colors group">
-        <User className="h-5 w-5 group-hover:fill-[#008ECC]" />
-        <span className="hidden md:inline font-medium text-sm">Sign Up/Sign In</span>
+      <DialogTrigger className="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors group">
+        <div className="p-2 rounded-lg group-hover:bg-primary-subtle transition-colors">
+          <User className="h-5 w-5" />
+        </div>
+        <span className="hidden md:inline font-bold text-sm">Sign Up/Sign In</span>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-background border-none shadow-float rounded-3xl p-6 sm:p-8">
         <DialogHeader className="space-y-3">

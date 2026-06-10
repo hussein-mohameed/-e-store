@@ -78,16 +78,16 @@ export function AuthForm() {
         {step === "phone" ? (
           <div className="space-y-4">
             <div className="space-y-2 text-start">
-              <Label className="text-sm font-bold text-gray-700">{t("phoneLabel")}</Label>
+              <Label className="text-sm font-bold text-foreground">{t("phoneLabel")}</Label>
               <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center justify-center w-16 border-e border-gray-200 bg-gray-50 rounded-s-xl">
-                  <span className="text-gray-500 text-sm font-bold" dir="ltr">+964</span>
+                <div className="absolute inset-y-0 start-0 flex items-center justify-center w-16 border-e border-border bg-surface rounded-s-xl">
+                  <span className="text-text-secondary text-sm font-bold" dir="ltr">+964</span>
                 </div>
                 <Input
                   placeholder={isAr ? "770 000 0000" : "770 000 0000"}
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="h-12 rounded-xl border-gray-200 ps-20 focus-visible:ring-[#008ECC] focus-visible:ring-offset-0"
+                  className="h-14 rounded-xl border-border ps-20 bg-surface focus-visible:ring-primary focus-visible:ring-offset-0 text-foreground shadow-sm"
                   dir="ltr"
                   type="tel"
                 />
@@ -112,22 +112,22 @@ export function AuthForm() {
         ) : (
           <div className="space-y-4 text-start">
             <div className="space-y-2">
-              <Label className="text-sm font-bold text-gray-700">{t("otpLabel")}</Label>
+              <Label className="text-sm font-bold text-foreground">{t("otpLabel")}</Label>
               <Input
                 placeholder="• • • • • •"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 maxLength={6}
-                className="h-12 rounded-xl border-gray-200 text-center text-xl tracking-[0.5em] focus-visible:ring-[#008ECC] focus-visible:ring-offset-0"
+                className="h-14 rounded-xl border-border bg-surface text-center text-xl tracking-[0.5em] focus-visible:ring-primary focus-visible:ring-offset-0 text-foreground shadow-sm"
                 dir="ltr"
               />
-              <p className="text-xs text-gray-500 pt-1">
+              <p className="text-xs text-text-secondary pt-1">
                 {isAr ? `تم إرسال الكود إلى ${phone}` : `Code sent to ${phone}`}
-                <button onClick={() => setStep("phone")} className="text-[#008ECC] font-bold mx-2 hover:underline">
+                <button onClick={() => setStep("phone")} className="text-primary font-bold mx-2 hover:underline">
                   {isAr ? "تغيير الرقم" : "Change number"}
                 </button>
               </p>
-              <p className="text-xs text-[#25D366] font-bold mt-2">
+              <p className="text-xs text-primary font-bold mt-2">
                 {isAr ? "💡 ملاحظة: للتجربة، يرجى إدخال الرمز 123456" : "💡 Note: For testing, please enter code 123456"}
               </p>
             </div>
@@ -135,7 +135,7 @@ export function AuthForm() {
             <Button 
               onClick={verifyOtp} 
               disabled={loading || otp.length < 6} 
-              className="h-12 w-full rounded-xl bg-[#008ECC] hover:bg-[#007AC1] text-white font-bold shadow-md transition-all flex items-center justify-center"
+              className="h-14 w-full rounded-xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white font-bold shadow-soft transition-all flex items-center justify-center text-base"
             >
               {loading ? (
                 <span className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />

@@ -3,25 +3,25 @@
 :root {
   /* HSL Colors - Refactoring UI Principles */
   /* Backgrounds */
-  --background: hsl(44, 40%, 96%); /* Faint Vintage */
-  --surface: hsl(44, 60%, 89%); /* Vintage: #F4EBD3 */
-  --surface-hover: hsl(35, 28%, 85%); /* Blend */
-  --surface-active: hsl(35, 28%, 82%); /* Beige: #DED3C4 */
+  --background: hsl(0, 0%, 96%); /* #F5F5F5 - Calm Gray */
+  --surface: hsl(0, 0%, 100%); /* White for high contrast cards */
+  --surface-hover: hsl(180, 47%, 91%); /* #DFF1F1 - Light Mint for hover */
+  --surface-active: hsl(190, 31%, 79%); /* #BBD5DA - Darker tint for active */
   
   /* Text */
-  --foreground: hsl(235, 30%, 15%); /* Deep Navy */
-  --text-secondary: hsl(235, 20%, 35%); /* Dark Navy */
-  --text-tertiary: hsl(225, 21%, 50%); /* Darkened Sea */
+  --foreground: hsl(183, 27%, 15%); /* Very dark Teal instead of Black */
+  --text-secondary: hsl(183, 20%, 35%); /* Dark Teal for secondary text */
+  --text-tertiary: hsl(190, 31%, 50%); /* Darkened tint for hints/icons */
   
   /* Borders */
-  --border: hsl(35, 28%, 75%); /* Darkened Beige */
-  --border-focus: hsl(235, 17%, 40%); /* Navy */
+  --border: hsl(190, 31%, 85%); /* Subtle border based on BBD5DA */
+  --border-focus: hsl(183, 50%, 55%); /* Brighter Primary focus ring */
   
-  /* Primary - Navy */
-  --primary: hsl(235, 17%, 40%); /* Navy: #555879 */
-  --primary-hover: hsl(235, 17%, 30%);
-  --primary-active: hsl(235, 17%, 20%);
-  --primary-subtle: hsl(225, 21%, 85%); /* Lightened Sea for subtle backgrounds */
+  /* Primary - Brighter Teal */
+  --primary: hsl(183, 50%, 55%); /* Brighter & more vibrant Teal */
+  --primary-hover: hsl(183, 50%, 45%); /* Darker for hover */
+  --primary-active: hsl(183, 50%, 35%); /* Even darker for active */
+  --primary-subtle: hsl(180, 47%, 91%); /* #DFF1F1 - Very subtle primary background */
   
   /* Custom Shadows - Soft & Diffuse */
   --shadow-soft: 0 4px 6px -1px hsl(215, 25%, 15%, 0.05), 0 2px 4px -1px hsl(215, 25%, 15%, 0.03);

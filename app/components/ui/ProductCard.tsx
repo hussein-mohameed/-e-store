@@ -26,10 +26,10 @@ export function ProductCard({ product }: ProductCardProps) {
   const savedAmount = hasDiscount ? oldPrice - currentPrice : 0;
 
   return (
-    <Card className="group relative flex h-full flex-col overflow-hidden rounded-xl border-gray-100 bg-white shadow-sm transition-all hover:shadow-md">
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border-border bg-surface shadow-sm transition-all duration-300 hover:shadow-float hover:-translate-y-1 hover:border-primary/50">
       {/* Discount Badge */}
       {hasDiscount && (
-        <Badge className="absolute right-0 top-0 z-10 flex flex-col items-center justify-center rounded-none rounded-bl-lg bg-[#008ECC] px-2 py-1 text-[10px] font-bold leading-tight text-white hover:bg-[#008ECC]/90">
+        <Badge className="absolute right-0 top-0 z-10 flex flex-col items-center justify-center rounded-none rounded-bl-xl bg-primary px-3 py-1.5 text-[10px] font-black leading-tight text-white hover:bg-primary-hover shadow-sm">
           <span>{discountPercent}%</span>
           <span>OFF</span>
         </Badge>
@@ -37,36 +37,37 @@ export function ProductCard({ product }: ProductCardProps) {
 
       {/* Product Image */}
       <CardHeader className="p-0">
-        <div className="relative aspect-square w-full overflow-hidden bg-gray-50/30 p-6">
+        <div className="relative aspect-square w-full overflow-hidden bg-background p-6">
           <Image
             src={image || "https://placehold.co/400x400/png?text=Product"}
             alt={name}
             fill
-            className="object-contain object-center transition-transform duration-300 group-hover:scale-105"
+            className="object-contain object-center transition-transform duration-500 group-hover:scale-110"
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 20vw, 20vw"
+            unoptimized
           />
         </div>
       </CardHeader>
 
       {/* Product Details */}
-      <CardContent className="flex flex-1 flex-col p-4">
-        <CardTitle className="line-clamp-2 text-sm font-semibold text-gray-800">
+      <CardContent className="flex flex-1 flex-col p-5 bg-surface">
+        <CardTitle className="line-clamp-2 text-sm font-bold text-foreground leading-snug">
           {name}
         </CardTitle>
-        <div className="mt-auto pt-2">
+        <div className="mt-auto pt-3">
           <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-gray-900">
+            <span className="text-xl font-black text-foreground">
               ₹{currentPrice.toLocaleString()}
             </span>
             {hasDiscount && (
-              <span className="text-sm font-medium text-gray-400 line-through">
+              <span className="text-sm font-bold text-text-tertiary line-through">
                 ₹{oldPrice.toLocaleString()}
               </span>
             )}
           </div>
-          <div className="mt-1 min-h-[20px]">
+          <div className="mt-2 min-h-[24px]">
             {hasDiscount && (
-              <span className="text-xs font-semibold text-[#249B3E]">
+              <span className="text-xs font-bold text-primary bg-primary-subtle px-2 py-1 rounded-md">
                 Save - ₹{savedAmount.toLocaleString()}
               </span>
             )}
@@ -75,8 +76,8 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardContent>
 
       {/* Optional Hover Action */}
-      <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-white p-4 transition-transform duration-300 group-hover:translate-y-0">
-         <Button className="w-full bg-[#008ECC] hover:bg-[#008ECC]/90 text-white" size="sm">
+      <div className="absolute bottom-0 left-0 right-0 translate-y-full bg-surface/95 backdrop-blur-sm p-4 transition-transform duration-300 group-hover:translate-y-0 border-t border-border">
+         <Button className="w-full bg-primary hover:bg-primary-hover active:bg-primary-active text-white rounded-xl h-11 font-bold shadow-sm transition-all" size="sm">
             <ShoppingCart className="mr-2 h-4 w-4" />
             Add to Cart
          </Button>

@@ -9,9 +9,9 @@ export function AppBanner() {
   const isAr = locale === "ar";
 
   return (
-    <section className="relative overflow-hidden rounded-2xl bg-[#111111] text-white shadow-xl shadow-black/10">
+    <section className="relative overflow-hidden rounded-2xl bg-primary text-white shadow-xl shadow-primary/20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.05]">
         <div className="h-full w-full bg-[radial-gradient(circle_at_50%_50%,white_2px,transparent_2px)] bg-[length:30px_30px]" />
       </div>
 
@@ -20,24 +20,24 @@ export function AppBanner() {
           <h2 className="text-4xl font-black leading-tight md:text-5xl tracking-tight">
             {isAr ? "حمل التطبيق الآن واحصل على خصم 20%" : "Download Our App & Get 20% Off"}
           </h2>
-          <p className="text-lg text-gray-400 font-medium">
+          <p className="text-lg text-white/80 font-medium">
             {isAr 
               ? "تسوق أينما كنت وفي أي وقت بكل سهولة وسرعة من خلال تطبيقنا المميز." 
               : "Shop wherever you are, anytime, with ease and speed through our premium app."}
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row md:justify-start">
-            <Button size="lg" className="h-14 w-48 rounded-xl bg-gray-900 text-white hover:bg-gray-800 gap-2">
-              <Image src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" alt="Apple" width={20} height={20} className="object-contain" unoptimized />
+            <Button size="lg" className="h-14 w-48 rounded-xl bg-background text-foreground hover:bg-surface shadow-soft gap-2">
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/3/31/Apple_logo_white.svg" alt="Apple" width={20} height={20} className="object-contain invert" unoptimized />
               <div className="flex flex-col items-start text-start leading-none">
-                <span className="text-[10px] text-gray-300">Download on the</span>
-                <span className="font-bold">App Store</span>
+                <span className="text-[10px] text-text-secondary">Download on the</span>
+                <span className="font-bold text-foreground">App Store</span>
               </div>
             </Button>
-            <Button size="lg" className="h-14 w-48 rounded-xl bg-gray-900 text-white hover:bg-gray-800 gap-2">
-              <Image src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" alt="Google Play" width={20} height={20} className="object-contain" unoptimized />
+            <Button size="lg" className="h-14 w-48 rounded-xl bg-background text-foreground hover:bg-surface shadow-soft gap-2">
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" alt="Google Play" width={20} height={20} className="object-contain invert" unoptimized />
               <div className="flex flex-col items-start text-start leading-none">
-                <span className="text-[10px] text-gray-300">GET IT ON</span>
-                <span className="font-bold">Google Play</span>
+                <span className="text-[10px] text-text-secondary">GET IT ON</span>
+                <span className="font-bold text-foreground">Google Play</span>
               </div>
             </Button>
           </div>

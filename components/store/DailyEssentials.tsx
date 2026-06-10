@@ -41,8 +41,8 @@ export function DailyEssentials({
             className={cn(
               "px-5 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all",
               activeTab === tab.id 
-                ? "bg-black text-white shadow-md" 
-                : "bg-[var(--bg-surface)] text-gray-600 hover:text-black hover:bg-gray-200"
+                ? "bg-primary text-white shadow-md" 
+                : "bg-surface text-text-secondary hover:text-primary hover:bg-surface-hover border border-border/50"
             )}
           >
             {tab.label}
@@ -54,7 +54,7 @@ export function DailyEssentials({
         {categories.map((item) => (
           <div
             key={item.name}
-            className="group overflow-hidden rounded-2xl border border-gray-100 bg-[var(--bg-surface)] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="group overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-300 hover:shadow-float hover:-translate-y-1 hover:border-primary/50"
           >
             <div className="flex h-32 items-center justify-center p-4">
               <Image
@@ -66,9 +66,9 @@ export function DailyEssentials({
                 unoptimized
               />
             </div>
-            <div className="border-t border-gray-100 bg-white p-3 text-center">
-              <p className="text-sm font-bold text-gray-900 line-clamp-1">{item.name}</p>
-              <p className="text-xs font-bold text-black bg-gray-100 px-2 py-1 rounded-md mt-1 inline-block">
+            <div className="border-t border-border bg-background p-3 text-center">
+              <p className="text-sm font-black text-foreground line-clamp-1">{item.name}</p>
+              <p className="text-[11px] font-bold text-primary bg-primary-subtle px-2 py-1 rounded-md mt-2 inline-block">
                 {item.discount}
               </p>
             </div>
