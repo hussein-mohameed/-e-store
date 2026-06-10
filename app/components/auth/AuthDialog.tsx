@@ -67,12 +67,12 @@ export function AuthDialog() {
         <User className="h-5 w-5 group-hover:fill-[#008ECC]" />
         <span className="hidden md:inline font-medium text-sm">Sign Up/Sign In</span>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-white rounded-xl">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-gray-800">
+      <DialogContent className="sm:max-w-[425px] bg-background border-none shadow-float rounded-3xl p-6 sm:p-8">
+        <DialogHeader className="space-y-3">
+          <DialogTitle className="text-3xl font-black text-foreground tracking-tight">
             {step === "phone" ? "Welcome to MegaMart" : "Verify your number"}
           </DialogTitle>
-          <DialogDescription className="text-gray-500">
+          <DialogDescription className="text-text-secondary text-base">
             {step === "phone" 
               ? "Enter your WhatsApp number to Sign In or Sign Up." 
               : `We sent a 4-digit code to ${phone}.`}
@@ -80,26 +80,26 @@ export function AuthDialog() {
         </DialogHeader>
         
         {step === "phone" ? (
-          <form onSubmit={handleSendOtp} className="space-y-6 pt-4">
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-gray-700 font-medium">WhatsApp Number</Label>
+          <form onSubmit={handleSendOtp} className="space-y-8 pt-6">
+            <div className="space-y-3">
+              <Label htmlFor="phone" className="text-foreground font-semibold text-sm tracking-wide">WhatsApp Number</Label>
               <Input 
                 id="phone" 
                 placeholder="+1234567890" 
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="border-gray-200 focus:border-[#008ECC] focus:ring-[#008ECC]"
+                className="h-14 bg-surface border-transparent focus:border-border-focus focus:ring-1 focus:ring-border-focus focus:bg-background rounded-xl px-4 transition-all text-base font-medium text-foreground"
               />
             </div>
-            <Button type="submit" className="w-full bg-[#008ECC] hover:bg-[#008ECC]/90 text-white rounded-lg py-6 text-lg font-semibold" disabled={loading}>
+            <Button type="submit" className="w-full bg-primary hover:bg-primary-hover active:bg-primary-active text-white shadow-soft hover:shadow-float rounded-xl h-14 text-lg font-bold transition-all" disabled={loading}>
               {loading ? "Sending..." : "Continue"}
             </Button>
           </form>
         ) : (
-          <form onSubmit={handleVerifyOtp} className="space-y-6 pt-4">
-            <div className="space-y-2">
-              <Label htmlFor="otp" className="text-gray-700 font-medium">4-Digit OTP</Label>
+          <form onSubmit={handleVerifyOtp} className="space-y-8 pt-6">
+            <div className="space-y-3">
+              <Label htmlFor="otp" className="text-foreground font-semibold text-sm tracking-wide">4-Digit OTP</Label>
               <Input 
                 id="otp" 
                 placeholder="1234" 
@@ -107,13 +107,13 @@ export function AuthDialog() {
                 onChange={(e) => setOtp(e.target.value)}
                 required
                 maxLength={4}
-                className="border-gray-200 focus:border-[#008ECC] focus:ring-[#008ECC] text-center text-2xl tracking-widest"
+                className="h-16 bg-surface border-transparent focus:border-border-focus focus:ring-1 focus:ring-border-focus focus:bg-background rounded-xl px-4 transition-all text-center text-3xl font-black tracking-[0.5em] text-foreground"
               />
             </div>
-            <Button type="submit" className="w-full bg-[#008ECC] hover:bg-[#008ECC]/90 text-white rounded-lg py-6 text-lg font-semibold" disabled={loading}>
+            <Button type="submit" className="w-full bg-primary hover:bg-primary-hover active:bg-primary-active text-white shadow-soft hover:shadow-float rounded-xl h-14 text-lg font-bold transition-all" disabled={loading}>
               {loading ? "Verifying..." : "Verify & Sign In"}
             </Button>
-            <Button type="button" variant="ghost" className="w-full text-gray-500 hover:text-gray-800" onClick={() => setStep("phone")}>
+            <Button type="button" variant="ghost" className="w-full text-text-secondary hover:text-foreground hover:bg-surface rounded-xl h-12 font-medium transition-colors" onClick={() => setStep("phone")}>
               Use a different number
             </Button>
           </form>

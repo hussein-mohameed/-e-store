@@ -44,19 +44,19 @@ export function TopCategories({
             <Link
               key={category.id}
               href={`/${locale}/categories/${category.slug}`}
-              className="group flex flex-col items-center gap-3"
+              className="group flex flex-col items-center gap-4"
             >
-              <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-[#F3F4F6] transition group-hover:bg-[#E5E7EB] md:h-24 md:w-24">
+              <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-[2rem] bg-surface border border-border/50 shadow-sm transition-all duration-300 group-hover:bg-surface-hover group-hover:shadow-float group-hover:-translate-y-1.5 md:h-28 md:w-28">
                 <Image
                   src={icon}
                   alt={label}
                   width={64}
                   height={64}
-                  className="h-12 w-12 object-contain transition-transform group-hover:scale-110"
+                  className="h-14 w-14 object-contain transition-transform duration-500 group-hover:scale-110"
                   unoptimized
                 />
               </div>
-              <span className="text-center text-xs font-bold text-gray-800 md:text-sm">
+              <span className="text-center text-xs font-bold text-text-secondary md:text-sm group-hover:text-primary transition-colors">
                 {label}
               </span>
             </Link>

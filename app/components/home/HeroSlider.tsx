@@ -38,7 +38,7 @@ export function HeroSlider() {
     <div className="container mx-auto px-4 py-6 w-full">
       <Carousel
         plugins={[plugin.current]}
-        className="w-full relative rounded-2xl overflow-hidden shadow-lg"
+        className="w-full relative rounded-3xl overflow-hidden shadow-soft"
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >
@@ -47,9 +47,9 @@ export function HeroSlider() {
             <CarouselItem key={banner.id}>
               <div className={`relative h-[300px] md:h-[400px] w-full flex items-center ${banner.bgClass}`}>
                 <div className="flex-1 px-8 md:px-16 z-10 text-white">
-                  <p className="text-sm md:text-lg mb-2 text-gray-200">{banner.subtitle}</p>
-                  <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">{banner.title}</h2>
-                  <p className="text-xl md:text-2xl font-semibold">{banner.discount}</p>
+                  <p className="text-sm md:text-lg mb-2 text-white/80 font-medium tracking-wide uppercase">{banner.subtitle}</p>
+                  <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tight leading-tight">{banner.title}</h2>
+                  <p className="text-xl md:text-2xl font-bold text-white/90">{banner.discount}</p>
                 </div>
                 <div className="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-center pointer-events-none">
                   {/* Decorative shape or image wrapper */}
@@ -66,8 +66,8 @@ export function HeroSlider() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 border-none w-10 h-10 shadow-md" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 border-none w-10 h-10 shadow-md" />
+        <CarouselPrevious className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white border-none w-12 h-12 shadow-sm backdrop-blur-md" />
+        <CarouselNext className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white border-none w-12 h-12 shadow-sm backdrop-blur-md" />
       </Carousel>
     </div>
   )

@@ -15,31 +15,31 @@ export async function CategoryList() {
 
   return (
     <section className="container mx-auto px-4 py-10">
-      <div className="flex items-center justify-between border-b border-gray-200 pb-2 mb-6">
-        <h2 className="text-lg md:text-xl font-bold text-gray-800">
-          Shop From <span className="text-[#008ECC] border-b-2 border-[#008ECC] pb-2 inline-block">Top Categories</span>
+      <div className="flex items-center justify-between border-b border-border pb-2 mb-8">
+        <h2 className="text-xl md:text-2xl font-black text-foreground">
+          Shop From <span className="text-primary border-b-4 border-primary pb-1 inline-block">Top Categories</span>
         </h2>
-        <Link href="/categories" className="text-sm font-medium text-gray-500 hover:text-[#008ECC] flex items-center transition-colors">
+        <Link href="/categories" className="text-sm font-bold text-text-secondary hover:text-primary flex items-center transition-colors">
           View All <ChevronRight className="h-4 w-4 ml-1" />
         </Link>
       </div>
 
-      <div className="flex gap-6 overflow-x-auto no-scrollbar pb-4 justify-between md:justify-start">
+      <div className="flex gap-6 overflow-x-auto no-scrollbar pb-6 justify-between md:justify-start">
         {categories.map((category) => (
-          <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center gap-3 group min-w-[100px]">
-            <div className="w-24 h-24 rounded-full bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200 group-hover:border-[#008ECC] transition-colors relative">
+          <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center gap-4 group min-w-[110px]">
+            <div className="w-28 h-28 rounded-full bg-surface shadow-sm border border-border/50 flex items-center justify-center overflow-hidden group-hover:border-primary group-hover:shadow-float group-hover:-translate-y-1.5 transition-all duration-300 relative">
                {category.icon ? (
                  <Image
                    src={category.icon}
                    alt={category.name}
                    fill
-                   className="object-cover p-4"
+                   className="object-cover p-5 transition-transform duration-500 group-hover:scale-110"
                  />
                ) : (
-                 <LayoutGrid className="w-10 h-10 text-gray-400 group-hover:text-[#008ECC] transition-colors" />
+                 <LayoutGrid className="w-10 h-10 text-text-tertiary group-hover:text-primary transition-colors" />
                )}
             </div>
-            <span className="text-sm font-medium text-gray-700 group-hover:text-[#008ECC] transition-colors">{category.name}</span>
+            <span className="text-sm font-bold text-text-secondary group-hover:text-primary transition-colors">{category.name}</span>
           </Link>
         ))}
       </div>

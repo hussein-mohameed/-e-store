@@ -49,46 +49,46 @@ export function HeroSlider() {
   const isAr = locale === "ar";
 
   return (
-    <section className="relative overflow-hidden rounded-2xl bg-[var(--bg-surface)] h-full flex flex-col">
+    <section className="relative overflow-hidden rounded-[2rem] bg-surface h-full flex flex-col shadow-soft">
       <div className="relative flex-1 flex min-h-[400px] md:min-h-[500px] w-full items-center justify-between transition-all duration-700 ease-in-out px-8 md:px-20 py-12">
         {/* Subtle Gradient Overlay for Text Readability */}
         <div className={cn(
-          "absolute inset-0 z-0 bg-gradient-to-r from-[var(--bg-surface)] via-[var(--bg-surface)]/80 to-transparent w-full md:w-3/4",
+          "absolute inset-0 z-0 bg-gradient-to-r from-surface via-surface/80 to-transparent w-full md:w-3/4",
           isAr && "bg-gradient-to-l"
         )} />
         
         {/* Left/Right controls (Subtle) */}
         <button
           onClick={prev}
-          className="absolute start-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/5 text-black/50 hover:bg-black/10 hover:text-black transition-all"
+          className="absolute start-4 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/5 text-text-secondary hover:bg-surface-hover hover:text-foreground transition-all shadow-sm backdrop-blur-sm"
         >
           <ChevronLeft className={cn("h-6 w-6", isAr && "rotate-180")} />
         </button>
 
         <button
           onClick={next}
-          className="absolute end-4 z-20 flex h-12 w-12 items-center justify-center rounded-full bg-black/5 text-black/50 hover:bg-black/10 hover:text-black transition-all"
+          className="absolute end-4 z-20 flex h-14 w-14 items-center justify-center rounded-full bg-foreground/5 text-text-secondary hover:bg-surface-hover hover:text-foreground transition-all shadow-sm backdrop-blur-sm"
         >
           <ChevronRight className={cn("h-6 w-6", isAr && "rotate-180")} />
         </button>
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-2xl space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
-          <p className="text-sm md:text-base font-semibold tracking-[0.2em] text-gray-500 uppercase">
+          <p className="text-sm md:text-base font-bold tracking-[0.2em] text-primary uppercase">
             {slide.title[locale as "en" | "ar"]}
           </p>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-black leading-[1.1]">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-foreground leading-[1.1]">
             {slide.subtitle[locale as "en" | "ar"]}
           </h2>
-          <p className="text-lg md:text-xl text-gray-500 font-medium max-w-md leading-relaxed">
+          <p className="text-lg md:text-xl text-text-secondary font-medium max-w-md leading-relaxed">
             {slide.desc[locale as "en" | "ar"]}
           </p>
           
-          <div className="pt-4 flex gap-4 items-center">
-            <button className="px-8 py-4 bg-black text-white rounded-full font-bold text-sm hover:bg-gray-800 transition-all shadow-xl shadow-black/10 hover:scale-105 active:scale-95">
+          <div className="pt-6 flex gap-4 items-center">
+            <button className="px-10 py-5 bg-primary text-white rounded-xl font-bold text-base hover:bg-primary-hover active:bg-primary-active transition-all shadow-soft hover:shadow-float hover:-translate-y-0.5">
               {isAr ? "اشتري الآن" : "Buy Now"}
             </button>
-            <button className="px-8 py-4 bg-white text-black rounded-full font-bold text-sm hover:bg-gray-50 transition-all hover:scale-105 active:scale-95">
+            <button className="px-10 py-5 bg-background text-foreground rounded-xl font-bold text-base hover:bg-surface-hover transition-all shadow-sm hover:shadow-soft border border-border">
               {isAr ? "اكتشف المزيد" : "Learn More"}
             </button>
           </div>
@@ -114,8 +114,8 @@ export function HeroSlider() {
               key={i}
               onClick={() => setCurrent(i)}
               className={cn(
-                "h-1.5 rounded-full transition-all duration-500",
-                i === current ? "w-10 bg-black" : "w-4 bg-black/20 hover:bg-black/40"
+                "h-2 rounded-full transition-all duration-500",
+                i === current ? "w-12 bg-primary shadow-soft" : "w-4 bg-border hover:bg-text-tertiary"
               )}
             />
           ))}

@@ -38,7 +38,7 @@ export function CartClient() {
             : "Looks like you haven't added anything to your cart yet. Explore our wide range of products and shop now!"}
         </p>
         <Link href={`/${locale}`}>
-          <Button size="lg" className="h-14 rounded-xl px-12 font-bold shadow-md bg-black text-white hover:bg-gray-800">
+          <Button size="lg" className="h-14 rounded-xl px-12 font-bold shadow-soft bg-primary text-white hover:bg-primary-hover transition-all">
             {isAr ? "ابدأ التسوق الآن" : "Start Shopping Now"}
           </Button>
         </Link>
@@ -70,7 +70,7 @@ export function CartClient() {
             return (
               <div
                 key={item.id}
-                className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 rounded-[2rem] border border-gray-100 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-xl hover:shadow-black/5"
+                className="group relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 rounded-3xl border border-border bg-background p-5 shadow-sm transition-all duration-300 hover:shadow-soft"
               >
                 {/* Product Image & Info */}
                 <div className="flex items-center gap-4 flex-1">
@@ -104,19 +104,19 @@ export function CartClient() {
                 <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto mt-4 sm:mt-0 pt-4 sm:pt-0 border-t border-gray-100 sm:border-0">
                   
                   {/* Quantity Controls */}
-                  <div className="flex items-center rounded-xl bg-[var(--bg-surface)] p-1 border border-transparent focus-within:border-gray-200 transition-colors">
+                  <div className="flex items-center rounded-xl bg-surface p-1.5 border border-transparent focus-within:border-border-focus transition-colors">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-gray-600 shadow-sm transition-all hover:text-black active:scale-95"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-background text-text-secondary shadow-sm transition-all hover:text-foreground hover:shadow active:scale-95"
                     >
                       <Minus className="h-4 w-4" />
                     </button>
-                    <span className="w-12 text-center text-sm font-bold text-gray-900">
+                    <span className="w-12 text-center text-sm font-bold text-foreground">
                       {item.quantity}
                     </span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-white text-gray-600 shadow-sm transition-all hover:text-black active:scale-95"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg bg-background text-text-secondary shadow-sm transition-all hover:text-foreground hover:shadow active:scale-95"
                     >
                       <Plus className="h-4 w-4" />
                     </button>
@@ -125,14 +125,14 @@ export function CartClient() {
                   {/* Total Price & Delete */}
                   <div className="flex items-center gap-4">
                     <div className="flex flex-col items-end">
-                      <span className="text-lg font-black text-gray-900" dir="ltr">
+                      <span className="text-lg font-black text-foreground" dir="ltr">
                         {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(itemTotal)}
                       </span>
                     </div>
                     
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-50 text-gray-400 hover:bg-[#FF3B30]/10 hover:text-[#FF3B30] transition-colors"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface text-text-tertiary hover:bg-red-50 hover:text-red-500 transition-colors"
                       aria-label="Remove item"
                     >
                       <Trash2 className="h-5 w-5" />
@@ -147,42 +147,42 @@ export function CartClient() {
 
       {/* Order Summary Sidebar */}
       <div className="w-full lg:w-96 shrink-0 space-y-6">
-        <div className="rounded-[2rem] bg-white border border-gray-100 shadow-xl shadow-black/5 p-6 md:p-8 sticky top-24">
-          <h2 className="mb-8 text-2xl font-black text-gray-900">
+        <div className="rounded-3xl bg-surface border border-border/50 shadow-float p-6 md:p-8 sticky top-28">
+          <h2 className="mb-8 text-2xl font-black text-foreground">
             {isAr ? "ملخص الطلب" : "Order Summary"}
           </h2>
 
-          <div className="space-y-5 border-b border-gray-100 pb-6 text-sm font-medium text-gray-600">
+          <div className="space-y-5 border-b border-border pb-6 text-sm font-medium text-text-secondary">
             <div className="flex justify-between items-start gap-4">
               <span className="pt-1">{isAr ? "المجموع الفرعي" : "Subtotal"}</span>
-              <div className="flex flex-col items-end gap-1 font-bold text-gray-900">
+              <div className="flex flex-col items-end gap-1 font-bold text-foreground">
                 <span dir="ltr">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalPrice)}</span>
-                <span dir="rtl" className="text-xs text-gray-400">({new Intl.NumberFormat(isAr ? 'ar-IQ' : 'en-IQ', { style: 'currency', currency: 'IQD', maximumFractionDigits: 0 }).format(totalPrice * 1500)})</span>
+                <span dir="rtl" className="text-xs text-text-tertiary">({new Intl.NumberFormat(isAr ? 'ar-IQ' : 'en-IQ', { style: 'currency', currency: 'IQD', maximumFractionDigits: 0 }).format(totalPrice * 1500)})</span>
               </div>
             </div>
             
             <div className="flex justify-between items-center">
               <span>{isAr ? "رسوم الشحن" : "Shipping Estimate"}</span>
-              <span className="font-bold text-gray-900">
+              <span className="font-bold text-foreground">
                 {shippingEstimate === 0 
                   ? <span className="text-[#25D366] bg-[#25D366]/10 px-3 py-1 rounded-full text-xs">{isAr ? "مجاني" : "Free"}</span> 
                   : <span dir="ltr">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(shippingEstimate)}</span>}
               </span>
             </div>
 
-            <div className="flex justify-between items-center text-gray-900">
+            <div className="flex justify-between items-center text-foreground">
               <span>{isAr ? "الخصم" : "Discount"}</span>
               <span className="font-bold text-[#FF3B30] bg-[#FF3B30]/10 px-3 py-1 rounded-full text-xs" dir="ltr">-$0</span>
             </div>
           </div>
 
           <div className="mt-6 mb-8 flex items-end justify-between gap-4">
-            <span className="text-xl font-bold text-gray-900">{isAr ? "الإجمالي" : "Total"}</span>
+            <span className="text-xl font-bold text-foreground">{isAr ? "الإجمالي" : "Total"}</span>
             <div className="flex flex-col items-end gap-1">
-              <span className="text-3xl font-black text-gray-900 leading-none" dir="ltr">
+              <span className="text-3xl font-black text-foreground leading-none" dir="ltr">
                 {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(finalTotal)}
               </span>
-              <span className="text-sm font-bold text-gray-500" dir="rtl">
+              <span className="text-sm font-bold text-text-secondary" dir="rtl">
                 {new Intl.NumberFormat(isAr ? 'ar-IQ' : 'en-IQ', { style: 'currency', currency: 'IQD', maximumFractionDigits: 0 }).format(finalTotal * 1500)}
               </span>
             </div>
@@ -190,25 +190,25 @@ export function CartClient() {
 
           <div className="space-y-6">
             {/* Promo Code */}
-            <div className="relative flex items-center bg-[var(--bg-surface)] rounded-2xl p-1.5 border border-transparent focus-within:border-gray-300 transition-colors">
-              <Tag className={cn("absolute h-5 w-5 text-gray-400 pointer-events-none", isAr ? "right-4" : "left-4")} />
+            <div className="relative flex items-center bg-background rounded-2xl p-1.5 border border-transparent focus-within:border-border-focus transition-colors shadow-sm">
+              <Tag className={cn("absolute h-5 w-5 text-text-tertiary pointer-events-none", isAr ? "right-4" : "left-4")} />
               <input 
                 placeholder={isAr ? "أدخل كود الخصم" : "Promo Code"} 
-                className={cn("h-12 w-full bg-transparent border-none outline-none text-sm font-bold placeholder:text-gray-400 placeholder:font-medium", isAr ? "pr-12 pl-24" : "pl-12 pr-24")} 
+                className={cn("h-12 w-full bg-transparent border-none outline-none text-sm font-bold placeholder:text-text-tertiary", isAr ? "pr-12 pl-24" : "pl-12 pr-24")} 
               />
-              <Button className={cn("absolute rounded-xl font-bold bg-black text-white hover:bg-gray-800 h-11 px-6 transition-all active:scale-95", isAr ? "left-1.5" : "right-1.5")}>
+              <Button className={cn("absolute rounded-xl font-bold bg-foreground text-white hover:bg-text-secondary h-11 px-6 transition-all active:scale-95", isAr ? "left-1.5" : "right-1.5")}>
                 {isAr ? "تطبيق" : "Apply"}
               </Button>
             </div>
 
             <Link href={`/${locale}/checkout`} className="block w-full">
-              <Button className="h-16 w-full rounded-2xl bg-black hover:bg-gray-800 text-white text-lg font-bold shadow-xl shadow-black/10 transition-all hover:scale-[1.02] active:scale-95 gap-3">
+              <Button className="h-16 w-full rounded-2xl bg-primary hover:bg-primary-hover active:bg-primary-active text-white text-lg font-bold shadow-soft hover:shadow-float transition-all hover:scale-[1.02] gap-3">
                 {isAr ? "متابعة الدفع" : "Proceed to Checkout"}
                 <ArrowRight className={cn("h-6 w-6", isAr && "rotate-180")} />
               </Button>
             </Link>
             
-            <div className="pt-2 flex items-center justify-center gap-2 text-xs font-bold text-gray-400">
+            <div className="pt-2 flex items-center justify-center gap-2 text-xs font-bold text-text-tertiary">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-4 w-4"><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
               {isAr ? "عملية دفع آمنة ومشفرة 100%" : "100% Secure & Encrypted Checkout"}
             </div>

@@ -16,9 +16,9 @@ export function Navbar({ categories }: NavbarProps) {
   if (categories.length === 0) return null;
 
   return (
-    <nav className="border-b border-gray-100 bg-white">
-      <div className="mx-auto max-w-7xl px-4">
-        <ul className="flex items-center justify-center gap-2 overflow-x-auto py-3 scrollbar-hide">
+    <nav className="bg-background">
+      <div className="mx-auto max-w-7xl px-4 md:px-6">
+        <ul className="flex items-center gap-6 overflow-x-auto py-3 scrollbar-hide">
           {categories.map((category, index) => {
             const label =
               locale === "ar" && category.nameAr
@@ -28,10 +28,10 @@ export function Navbar({ categories }: NavbarProps) {
               <li key={category.id} className="shrink-0">
                 <Link
                   href={`/${locale}/categories/${category.slug}`}
-                  className="flex items-center gap-1 whitespace-nowrap rounded-full px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-black transition-colors"
+                  className="flex items-center gap-1.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-text-secondary hover:bg-surface hover:text-primary transition-colors"
                 >
                   {label}
-                  <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+                  <ChevronDown className="h-4 w-4 opacity-50" />
                 </Link>
               </li>
             );

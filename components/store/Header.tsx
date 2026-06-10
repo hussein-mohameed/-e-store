@@ -31,31 +31,31 @@ export function Header({ categories }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
-      <div className="mx-auto w-full max-w-7xl px-4">
-        <div className="flex h-20 items-center justify-between gap-8">
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-md shadow-soft border-b border-border">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+        <div className="flex h-24 items-center justify-between gap-6 md:gap-10">
           
           {/* 1. Logo (Left) */}
           <Link
             href={`/${locale}`}
-            className="flex-shrink-0 text-3xl font-black text-gray-900 tracking-tighter transition-opacity hover:opacity-80"
+            className="flex-shrink-0 text-3xl font-black text-foreground tracking-tighter transition-opacity hover:opacity-80 flex items-center gap-1"
           >
-            MegaMart<span className="text-black">.</span>
+            MegaMart<span className="text-primary">.</span>
           </Link>
 
           {/* 2. Search Bar (Center) - Perfectly sized and constrained */}
           <div className="hidden md:flex flex-1 max-w-2xl justify-center">
             <form 
               onSubmit={handleSearch}
-              className="group flex h-12 w-full items-center overflow-hidden rounded-full bg-[#f5f5f7] px-4 transition-all duration-300 focus-within:bg-white focus-within:ring-2 focus-within:ring-black focus-within:shadow-md border border-transparent focus-within:border-gray-200"
+              className="group flex h-14 w-full items-center overflow-hidden rounded-xl bg-surface px-4 transition-all duration-300 focus-within:bg-background focus-within:ring-2 focus-within:ring-border-focus focus-within:shadow-soft border border-transparent focus-within:border-border-focus"
             >
-              <Search className="h-5 w-5 text-gray-400 group-focus-within:text-black transition-colors" />
+              <Search className="h-5 w-5 text-text-secondary group-focus-within:text-primary transition-colors" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t("searchPlaceholder") || "Search products, brands and categories..."}
-                className="h-full w-full bg-transparent px-4 text-sm font-bold text-gray-900 placeholder:font-medium placeholder:text-gray-400 focus:outline-none"
+                className="h-full w-full bg-transparent px-4 text-sm font-medium text-foreground placeholder:font-normal placeholder:text-text-tertiary focus:outline-none"
               />
               {/* Optional submit button for better UX, hidden visually but clickable */}
               <button type="submit" className="hidden" aria-label="Submit search" />
@@ -67,43 +67,43 @@ export function Header({ categories }: HeaderProps) {
             
             <Link
               href={`/${otherLocale}`}
-              className="hidden sm:flex items-center justify-center h-10 w-10 rounded-full bg-gray-50 text-sm font-bold text-gray-500 hover:bg-gray-100 hover:text-black transition-colors"
+              className="hidden sm:flex items-center justify-center h-12 w-12 rounded-xl bg-surface text-sm font-bold text-text-secondary hover:bg-surface-hover hover:text-foreground transition-colors"
             >
               {otherLocale === "ar" ? "عربي" : "EN"}
             </Link>
 
-            <div className="h-6 w-px bg-gray-200 hidden sm:block"></div>
+            <div className="h-8 w-px bg-border hidden sm:block"></div>
 
             <Link
               href={`/${locale}/auth`}
-              className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group"
+              className="flex items-center gap-3 text-text-secondary hover:text-foreground transition-colors group"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 group-hover:bg-gray-100 transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-surface group-hover:bg-surface-hover group-hover:text-primary transition-colors">
                 <User className="h-5 w-5 stroke-[2]" />
               </div>
-              <span className="hidden lg:inline text-sm font-bold">{t("signIn")}</span>
+              <span className="hidden lg:inline text-sm font-semibold">{t("signIn")}</span>
             </Link>
 
             <Link
               href={`/${locale}/cart`}
-              className="flex items-center gap-2 text-gray-700 hover:text-black transition-colors group"
+              className="flex items-center gap-3 text-text-secondary hover:text-foreground transition-colors group"
             >
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 group-hover:bg-gray-100 transition-colors">
+              <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-surface group-hover:bg-surface-hover group-hover:text-primary transition-colors">
                 <ShoppingCart className="h-5 w-5 stroke-[2]" />
                 {mounted && totalItems > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white bg-black text-[10px] font-black text-white shadow-sm">
+                  <span className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full border-2 border-background bg-primary text-[11px] font-black text-white shadow-soft">
                     {totalItems}
                   </span>
                 )}
               </div>
-              <span className="hidden lg:inline text-sm font-bold">{t("cart")}</span>
+              <span className="hidden lg:inline text-sm font-semibold">{t("cart")}</span>
             </Link>
           </div>
         </div>
       </div>
 
       {/* Categories Navbar (Bottom) */}
-      <div className="border-t border-gray-50 bg-white/50">
+      <div className="border-t border-border bg-background">
         <Navbar categories={categories} />
       </div>
     </header>
